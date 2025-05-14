@@ -6,7 +6,6 @@ import { LuNewspaper } from "react-icons/lu";
 import { TbBriefcase } from "react-icons/tb";
 import { LuFileQuestion } from "react-icons/lu";
 
-import FreeShoppsLogo from "@/assets/freeShoppsLogo.png";
 import type { IconType } from "react-icons/lib";
 
 interface INavlink {
@@ -81,7 +80,7 @@ const Sidebar = () => {
     >
       <div className="h-full pl-20 py-4 overflow-y-auto bg-white dark:bg-gray-800">
         <div className="mb-3">
-          <img src={FreeShoppsLogo} alt="" className="w-20 ml-6 mt-5" />
+          <img src={"/freeShoppsLogo.png"} alt="" className="w-20 ml-6 mt-5" />
         </div>
         <ul className="space-y-4 font-medium">
           {items.map((item) => {

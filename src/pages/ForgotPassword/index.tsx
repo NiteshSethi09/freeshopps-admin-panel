@@ -5,8 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import FreeShoppsLogo from "@/assets/freeShoppsLogo.png";
-
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -18,11 +16,11 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center bg-[url(src/assets/backgroundImg.jpg)] bg-size-[100%_100%] bg-no-repeat">
+      <div className="w-full h-screen flex justify-center items-center bg-[url(/backgroundImg.jpg)] bg-size-[100%_100%] bg-no-repeat">
         <Card className="w-[630px]">
           <CardHeader className="px-8">
             <div className="flex items-center gap-6">
-              <img src={FreeShoppsLogo} alt="" className="w-32" />
+              <img src={"/freeShoppsLogo.png"} alt="" className="w-32" />
               <div className="">
                 <h2 className="text-3xl font-bold text-[#202224]">
                   Forget Password

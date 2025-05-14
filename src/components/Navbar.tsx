@@ -23,7 +23,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import NotificationBell from "@/assets/notificationBell.svg";
 import { useEffect, useState } from "react";
 import type { userProfile } from "@/types/userProfile";
 
@@ -108,7 +107,11 @@ const Navbar = () => {
       <div className="flex gap-x-16">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <img src={NotificationBell} alt="" className="cursor-pointer" />
+            <img
+              src={"/notificationBell.svg"}
+              alt=""
+              className="cursor-pointer"
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="">
             <DropdownMenuLabel className="text-[#404040]">

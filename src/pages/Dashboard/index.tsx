@@ -18,7 +18,7 @@ const Dashboard = () => {
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col bg-[url(/src/assets/wave.svg)] bg-no-repeat bg-size-[100%_auto] ml-[20rem]">
+      <div className="flex flex-col bg-[url(/wave.svg)] bg-no-repeat bg-size-[100%_auto] ml-[20rem]">
         <Navbar />
         <div className="pt-3 pl-7 pr-40 h-full">
           <Suspense fallback={<Spinner />}>
