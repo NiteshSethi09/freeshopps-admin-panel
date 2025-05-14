@@ -42,6 +42,14 @@ const Navbar = () => {
   useEffect(() => {
     getUserProfileData();
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("freeshopps_user_data");
+    localStorage.removeItem("freeshopps_user_accessToken");
+
+    window.location.href = "/";
+  };
+
   const notificationBellItems = [
     {
       iconGradient: "bg-[linear-gradient(180deg,_#4E96FF_0%,_#80C9FC_100%)]",
@@ -85,6 +93,7 @@ const Navbar = () => {
     {
       icon: <LogOut color="#FF8F8F" strokeWidth={3} />,
       label: "Log Out",
+      onClick: handleLogout,
     },
   ];
   return (
@@ -153,10 +162,11 @@ const Navbar = () => {
                     {userMenu.map((menu) => (
                       <DropdownMenuItem
                         key={menu.label}
-                        className="not-last:border-b rounded-none px-5 py-3"
+                        className="not-last:border-b rounded-none px-5 py-3 cursor-pointer"
+                        onClick={menu.onClick}
                       >
                         {menu.icon}
-                        <Label className="text-[#404040] font-semibold text-sm">
+                        <Label className="text-[#404040] font-semibold text-sm cursor-pointer">
                           {menu.label}
                         </Label>
                       </DropdownMenuItem>
