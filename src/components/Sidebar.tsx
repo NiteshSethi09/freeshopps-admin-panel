@@ -4,6 +4,7 @@ import { TiDocument } from "react-icons/ti";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { LuNewspaper } from "react-icons/lu";
 import { TbBriefcase } from "react-icons/tb";
+import { LuFileQuestion } from "react-icons/lu";
 
 import FreeShoppsLogo from "@/assets/freeShoppsLogo.png";
 import type { IconType } from "react-icons/lib";
@@ -63,6 +64,12 @@ const Sidebar = () => {
           url: "/dashboard/career-openings-category",
         },
       ],
+    },
+    {
+      title: "FAQ's",
+      url: "/dashboard/faqs",
+      icon: LuFileQuestion,
+      children: [],
     },
   ];
 

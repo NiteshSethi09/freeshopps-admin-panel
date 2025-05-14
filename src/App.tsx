@@ -14,11 +14,11 @@ const CareerOpening = lazy(() => import("./pages/Career/CareerOpening"));
 const CareerOpeningCategory = lazy(
   () => import("./pages/Career/CareerOpeningCategory")
 );
+const Faqs = lazy(() => import("./pages/Faq"));
 
 function App() {
   return (
     <>
-      {/* <Login /> */}
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="login" element={<Login />} />
@@ -35,6 +35,7 @@ function App() {
               path="career-openings-category"
               element={<CareerOpeningCategory />}
             />
+            <Route path="faqs" element={<Faqs />} />
           </Route>
 
           <Route path="*" element={<Navigate to="login" replace />} />

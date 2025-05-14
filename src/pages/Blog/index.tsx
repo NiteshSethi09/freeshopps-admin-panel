@@ -10,7 +10,7 @@ import { axiosInstance } from "@/lib/axiosInstance";
 
 import type { BlogData } from "@/types/blog";
 
-const BlogPage = () => {
+const Blog = () => {
   const [blogData, setBlogData] = useState<BlogData | null>(null);
 
   const handleFetchBlogData = async () => {
@@ -41,4 +41,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default Blog;
