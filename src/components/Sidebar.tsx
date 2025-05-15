@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { TiDocument } from "react-icons/ti";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { LuNewspaper } from "react-icons/lu";
@@ -7,6 +7,14 @@ import { TbBriefcase } from "react-icons/tb";
 import { LuFileQuestion } from "react-icons/lu";
 
 import type { IconType } from "react-icons/lib";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface INavlink {
   title: string;
@@ -113,28 +121,11 @@ const Sidebar = () => {
 
 function CustomDropdownNavLink({ data }: { data: INavlink }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+    <DropdownMenu onOpenChange={setDropdownOpen}>
+      <DropdownMenuTrigger
         className={`flex items-center w-full px-7 py-3 rounded-xl ${
           data.children.some((link) => link.url === location.pathname)
             ? "text-white bg-[#199FB1] rounded-xl"
@@ -146,22 +137,21 @@ function CustomDropdownNavLink({ data }: { data: INavlink }) {
           {data?.title}
         </span>
         {dropdownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-      </button>
-      {dropdownOpen && (
-        <div className="absolute z-10 top-full mt-2 bg-white text-black rounded-xl shadow-md w-full overflow-hidden">
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="p-0 w-[calc(20rem-84px)]">
+        <DropdownMenuGroup>
           {data.children.map((link) => (
-            <NavLink
+            <DropdownMenuItem
               key={link.title}
-              to={link.url}
-              className="block px-4 py-2 hover:bg-gray-100 text-[#979797] font-medium text-lg"
-              onClick={() => setDropdownOpen(false)}
+              className="not-last:border-b rounded-none cursor-pointer px-4 py-2 hover:bg-gray-100 text-[#979797] font-medium text-base"
+              onClick={() => navigate(link.url)}
             >
               {link.title}
-            </NavLink>
+            </DropdownMenuItem>
           ))}
-        </div>
-      )}
-    </div>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
